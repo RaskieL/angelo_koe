@@ -29,19 +29,16 @@ class TreeNode {
     return result;
   }
 
-  Future<String> displayArborescence([int n = 0, StringBuffer? s]) async {
-    s ??= StringBuffer();
+  Future logArborescence([int n = 0]) async {
     if (n == 0) {
-      s.write("-> $name\n");
+      await Logger.log("-> $name");
     }
     for (var node in children) {
-      s.write(
-          "${"\t" * n}${node.dataType is Directory ? "->" : "- "} ${node.name}\n");
+      await Logger.log(
+          "${"\t" * n}${node.dataType is Directory ? "->" : "--"} ${node.name}");
       if (node.dataType is Directory) {
-        node.displayArborescence(n + 1);
+        await node.logArborescence(n + 1);
       }
     }
-    await Logger.log(s.toString());
-    return s.toString();
   }
 }

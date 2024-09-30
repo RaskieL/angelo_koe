@@ -19,11 +19,11 @@ Future<void> createArborescence(
     if (file.path != "./.git") {
       if (file is File) {
         node.addChild(TreeNode(file.path, file));
-        Logger.log("added file ${file.path} to ${node.name} in arborescence");
+        await Logger.log("added file ${file.path} to ${node.name} in arborescence");
       }
       if (file is Directory) {
         node.addChild(TreeNode(file.path, file));
-        Logger.log("added directory ${file.path} to ${node.name} in arborescence");
+        await Logger.log("added directory ${file.path} to ${node.name} in arborescence");
         final list = await getDirectoryContents(file);
         await createArborescence(file, list);
       }

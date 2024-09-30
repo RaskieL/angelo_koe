@@ -3,10 +3,10 @@ import 'model/explorer.dart';
 import 'dart:io';
 
 void main() async {
-  var rootDir = Directory('/home/raskiel/Musique/');
+  var rootDir = Directory('B:\\Code\\dart\\angel_koe_flutter\\lib');
   var rootFiles = await getDirectoryContents(rootDir);
   await createArborescence(rootDir, rootFiles);
-  await root.displayArborescence();
+  await root.logArborescence();
   runApp(const MainApp());
 }
 
