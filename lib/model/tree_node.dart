@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'logger.dart';
 
 class TreeNode {
   final String name;
@@ -28,18 +29,19 @@ class TreeNode {
     return result;
   }
 
-  String displayArborescence([int n = 0, StringBuffer? s]) {
+  Future<String> displayArborescence([int n = 0, StringBuffer? s]) async {
     s ??= StringBuffer();
     if (n == 0) {
-      s.write("-> ${name}");
+      s.write("-> $name\n");
     }
     for (var node in children) {
       s.write(
-          "${"\t" * n}${node.dataType is Directory ? "->" : "- "} ${node.name}");
+          "${"\t" * n}${node.dataType is Directory ? "->" : "- "} ${node.name}\n");
       if (node.dataType is Directory) {
         node.displayArborescence(n + 1);
       }
     }
+    await Logger.log(s.toString());
     return s.toString();
   }
 }

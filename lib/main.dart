@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'explorer.dart';
+import 'model/explorer.dart';
 import 'dart:io';
-void main() async{
-  var rootDir = Directory('C:\\Users\\RaSyst\\Music');
+
+void main() async {
+  var rootDir = Directory('/home/raskiel/Musique/');
   var rootFiles = await getDirectoryContents(rootDir);
   await createArborescence(rootDir, rootFiles);
-  
+  await root.displayArborescence();
   runApp(const MainApp());
 }
 
@@ -14,10 +15,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text(root.displayArborescence()),
+          child: Text("Hello World"),
         ),
       ),
     );

@@ -1,3 +1,3 @@
-# angel_koe
+# Angelo_koe
 
-A new Flutter project.
+A Music Player project made with Flutter
