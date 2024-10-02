@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class Logger {
-  static const String path = "B:\\Code\\dart\\angel_koe_flutter\\lib\\logs.log";
+  static final String path = "/home/raskiel/Code/Perso/angelo_koe/logs/logs-${DateTime.now().toString()}.log";
 
   static Future<File> log(var log) async {
     var file = File(path);
